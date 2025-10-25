@@ -8,11 +8,42 @@
 <body>
     <%- include("partials/nav.ejs") %>
 
-    <h2><%=planet_name%></h2>
+    <div id="main">
+        <h2><%=planet_name%></h2>
 
-    <%=planetInfo.description%>
-    <br>
-    <img src="<%=planetInfo.image%>" width="300">
+        <div class="twoCol">
+            <!-- LEFT COLUMN: text info -->
+            <div class="info card">
+                <p><%=planetInfo.description%></p>
+
+                <div class="stats">
+                    <h4>Distance from the Sun</h4>
+                    <p><%=planetInfo.distanceFromSun%></p>
+
+                    <h3>Year Length</h3>
+                    <p><%=planetInfo.yearLength%></p>
+
+                    <h3>Radius</h3>
+                    <p><%=planetInfo.radius%></p>
+
+                    <h3>One Earth Day on <%=planet_name%> is: </h3>
+                    <p><%=planetInfo.oneEarthDay%></p>
+
+                    <h3><%=planet_name%> has this many moons: </h3>
+                    <p><%=planetInfo.moons%></p>
+                </div>
+            </div>
+
+            <!-- RIGHT: image -->
+            <figure class="imgCol card">
+                <img class="img-fluid" src="<%= planetInfo.image %>" alt="<%= planet_name %> image">
+            </figure>
+
+        </div>
+
+    </div>
+
+    <%- include("partials/footer.ejs") %>
 </body>
 
 </html>

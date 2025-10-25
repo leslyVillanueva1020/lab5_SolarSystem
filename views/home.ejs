@@ -7,8 +7,17 @@
 
 <body>
     <%- include("partials/nav.ejs") %>
-    <img src="<%= randomImage %>" width="400">
+
+    <div id="main">
+        <h2>The Solar System</h2> <br> <br>
+
+        <img id="homePic" src="<%= randomImage %>" width="400">
+
+
+    </div>
     
+
+    <%- include("partials/footer.ejs") %>
 </body>
 
 </html>

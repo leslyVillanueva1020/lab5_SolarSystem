@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head.ejs") %>
+</head>
+<body>
+    <%- include("partials/nav.ejs") %>
+
+    <div id="main">
+        <h2>Aesteroids</h2>
+
+        <div class="twoCol">
+            <div class="info card">
+                <p><%= asteroidInfo.def %></p>
+            </div>
+
+            <figure class="imgCol card">
+                <img class="img-fluid" src="<%= asteroidInfo.image %>" alt="Asteroids Image">
+            </figure>
+        </div>
+
+    </div>
+
+    <%- include("partials/footer.ejs") %>
+</body>
+</html>

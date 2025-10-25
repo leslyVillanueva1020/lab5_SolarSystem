@@ -6,21 +6,39 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
+
 //root route
 app.get('/', async (req, res) => {  //also works as app.get('/', async function(req, res) {
     let url = "https://pixabay.com/api/?key=5589438-47a0bca778bf23fc2e8c5bf3e&per_page=50&orientation=horizontal&q=solar_system"
     let response = await fetch(url);
     let data = await response.json();
-    console.log(data);
-    let randomImage = data.hits[0].webformatURL;
+    // console.log(data);
+    let random0to9 = Math.floor(Math.random() * 50);
+    let randomImage = data.hits[random0to9].webformatURL;
     res.render('home.ejs', {randomImage})
 });
 
 app.get('/planet', (req, res) => { 
     let planet_name =req.query.planetName;
     let planetInfo = solarSystem[`get${planet_name}`]();
-    // console.log(planetInfo);
+    //console.log(planetInfo);
     res.render('planetInfo.ejs', {planetInfo, planet_name}) 
+});
+
+app.get('/asteroids', (req, res) => {
+    let asteroidInfo = solarSystem.getAsteroids();
+    // console.log(asteroidInfo)
+    res.render('asteroids.ejs', {asteroidInfo})
+});
+
+app.get('/comets', (req, res) => {
+    let cometInfo = solarSystem.getComets()
+    // console.log(cometInfo)
+    res.render('comets.ejs', {cometInfo})
+});
+
+app.get('/nasaPOD', (req, res) => {
+    res.render('nasaPod.ejs')
 });
 
 //mercury route
