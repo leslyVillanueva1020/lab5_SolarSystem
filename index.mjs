@@ -21,6 +21,17 @@ app.get('/', async (req, res) => {  //also works as app.get('/', async function(
 app.get('/planet', (req, res) => { 
     let planet_name =req.query.planetName;
     let planetInfo = solarSystem[`get${planet_name}`]();
+
+    const customImages = {
+        Jupiter: "/uploads/jupiter.png",
+        Mars: "/uploads/mars1.jpg"
+    };
+
+    if(customImages[planet_name]){
+        planetInfo.image = customImages[planet_name];
+        // console.log("CUSTOM IMAGE FOR" + planet_name);
+    }
+
     //console.log(planetInfo);
     res.render('planetInfo.ejs', {planetInfo, planet_name}) 
 });
